@@ -1,14 +1,17 @@
 const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
+const counter = document.querySelector('.counter'); 
+
+let jumpCount = 0; 
 
 const jump = () => {
     mario.classList.add('jump');
 
     setTimeout(() => {
         mario.classList.remove('jump');
-        
+        jumpCount++; 
+        counter.textContent = jumpCount; 
     }, 500);
-
 }
 
 const loop = setInterval(() => {
