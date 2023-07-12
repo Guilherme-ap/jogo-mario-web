@@ -4,20 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" defer></script>
     <title>Game Mario</title>
-    <bgsound src="audio/Música do Mário o.mp3" loop="-1"></bgsound>
 </head>
 <body>
-   <div class="game-container">
-        <img class="mario" src="imagens/mario.png">
-        <div class="pipe"></div>
-        <div class="counter">0</div> <!-- Elemento HTML para exibir o contador -->
-    </div>
-    
+  
     <div class="game-board">
+<div class="counter">00000</div>
 <img src="imagens/clouds.png" class="cloud">
 <img src="imagens/mario.gif" class="mario">
 <img src="imagens/pipe.png" class="pipe">
@@ -25,8 +20,17 @@
 
 
     </div>
-    <h1></h1>
-    <embed src="audio/Música do Mário o.mp3" autostart="true" loop="true" width="0" height="0">
+
+
+<div class="game-over-container">
+        <h1>Game Over</h1>
+	<div class="score">Score: <span class="score-value">0</span></div>
+        <button class="restart-button">Restart</button>
+    </div>
+
+    
+     <audio src="audio/theme song.mp3" autoplay loop></audio>
+     <audio id="jumpSound" src="audio/jump.mp3"></audio>
 
 </body>
 </html>
