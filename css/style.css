@@ -85,13 +85,13 @@
     bottom: 0;
     
 }
-.missel{
-    width: 80px;
+.coin {
+    width: 25px;
     position: absolute;
-    bottom: 200px;
-    animation: missel 3s infinite linear;
+    bottom: 80px;
+    animation: coin 3s infinite linear;
+    transform-origin: center;
 }
-
 
 .jump{
     animation: jump 500ms ease-out;
@@ -122,15 +122,15 @@
     }
     
 }
-@keyframes missel {
+@keyframes coin {
     from{
         right:-70px;
     }
     to{
         right: 100%;
     }
-    
 }
+
 
 @keyframes jump{
     0%{
@@ -218,3 +218,36 @@
         transform: scale(1);
     }
 }
+
+
+.counter {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffea00;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    animation: countAnimation 1s linear;
+}
+
+.coin-counter {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #000000;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.coin-collision {
+    display: none;
+}
+
+.coin-count {
+    color: #ffea00;
+    font-weight: bold;
+}
+

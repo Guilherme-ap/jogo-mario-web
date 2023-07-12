@@ -6,6 +6,8 @@ const restartButton = document.querySelector('.restart-button');
 const gameOver = document.querySelector('.game-over-container');
 const jumpSound = document.getElementById('jumpSound');
 const scoreContainer = document.querySelector('.score');
+const coinCounter = document.querySelector('.coin-count');
+let coinCount = 0;
 jumpSound.volume = 0.1;
 
 let jumpCount = 0;
@@ -24,10 +26,9 @@ const jump = () => {
         mario.classList.remove('jump');
         jumpCount++;
         counter.textContent = jumpCount;
-	 updateScore();
+        updateScore();
     }, 500);
 }
-
 
 const updateScore = () => {
     const formattedScore = String(jumpCount).padStart(5, '0');
@@ -35,8 +36,30 @@ const updateScore = () => {
     counter.textContent = formattedScore;
 }
 
+const checkCoinCollision = () => {
+    const coins = document.querySelectorAll('.coin');
+
+    coins.forEach(coin => {
+        const coinRect = coin.getBoundingClientRect();
+        const marioRect = mario.getBoundingClientRect();
+
+        if (
+            marioRect.left < coinRect.right &&
+            marioRect.right > coinRect.left &&
+            marioRect.top < coinRect.bottom &&
+            marioRect.bottom > coinRect.top
+        ) {
+            coinCount++;
+            coinCounter.textContent = coinCount;
+            coin.classList.add('coin-collision'); // Adiciona a classe para tornar a moeda invisível
+        }
+    });
+}
+
 const loop = setInterval(() => {
-	 gameOver.style.display = 'none'; 
+    checkCoinCollision();
+
+    gameOver.style.display = 'none';
     if (gameLost) {
         pipe.style.animation = 'none';
         pipe.style.left = '120px';
@@ -48,10 +71,8 @@ const loop = setInterval(() => {
         mario.style.width = '75px';
         mario.style.marginLeft = '50px';
 
-
         restartButton.style.display = 'block'; 	// Exibe o botão de reiniciar
-	 gameOver.style.display = 'block';  
-	
+        gameOver.style.display = 'block';
 
         clearInterval(loop);
         return;
